@@ -6,74 +6,87 @@ To implement Erosion and Dilation using Python and OpenCV.
 2. OpenCV
 ## Algorithm:
 ### Step1:
-<br>
-
+Import the image
 
 ### Step2:
-<br>
+Read the colour image and convert it into grayscale
 
 ### Step3:
-<br>
+Perform edge detection using canny
 
 ### Step4:
-<br>
+Define the kernel size for erosion and dilation
 
 ### Step5:
-<br>
+Display all images
 
- 
 ## Program:
+```
+Developed By : JANARTHANAN V K
+Reg No: 212222230051
+```
+```python
+import cv2
+import numpy as np
+from matplotlib import pyplot as plt
 
-``` Python
-# Import the necessary packages
+# Read the color image
+input_image_path = 'my photo.jpg'
+color_image = cv2.imread(input_image_path)
 
+# Convert the color image to grayscale
+gray_image = cv2.cvtColor(color_image, cv2.COLOR_BGR2GRAY)
 
+# Perform edge detection using Canny
+edges = cv2.Canny(gray_image, 180, 200)  # You can adjust the thresholds as needed
 
-# Create the Text using cv2.putText
+# Define the kernel size for erosion and dilation
+kernel_size = 5
+kernel = np.ones((kernel_size, kernel_size), np.uint8)
 
+# Perform erosion
+erosion = cv2.erode(edges, kernel, iterations=1)
 
+# Perform dilation
+dilation = cv2.dilate(edges, kernel, iterations=1)
 
-# Create the structuring element
+# Display all images
+plt.figure(figsize=(15, 10))
 
+plt.subplot(2, 3, 1)
+plt.imshow(cv2.cvtColor(color_image, cv2.COLOR_BGR2RGB))
+plt.title('Original Color Image')
+plt.axis('on')
 
+plt.subplot(2, 3, 2)
+plt.imshow(gray_image, cmap='gray')
+plt.title('Black and White Image')
+plt.axis('on')
 
-# Erode the image
+plt.subplot(2, 3, 3)
+plt.imshow(edges, cmap="gray")
+plt.title('Edge Segmentation')
+plt.axis('on')
 
+plt.subplot(2, 3, 4)
+plt.imshow(erosion, cmap='gray')
+plt.title('Erosion')
+plt.axis('on')
 
+plt.subplot(2, 3, 5)
+plt.imshow(dilation, cmap='gray')
+plt.title('Dilation')
+plt.axis('on')
 
-
-# Dilate the image
-
-
-
-
+plt.show()
 
 ```
+
 ## Output:
 
-### Display the input Image
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+![download](https://github.com/Janarthanan2/DIP_Ex09_erosion-dilation/assets/119393515/c2e09295-5bd2-4caf-b878-03b7ee56861d)
 
-### Display the Eroded Image
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-### Display the Dilated Image
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 ## Result
 Thus the generated text image is eroded and dilated using python and OpenCV.
